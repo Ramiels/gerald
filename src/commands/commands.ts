@@ -633,3 +633,20 @@ export class rollCommand extends GeraldCommand {
 		});
 	}
 }
+
+@ApplyOptions<GeraldCommandOptions>({
+	name: "Truth Or Dare",
+	description: "Answer a random question or perform a challenge.",
+})
+export class todCommand extends GeraldCommand {
+
+    public override async chatInputRun(interaction: discord.CommandInteraction, context: sapphire.ChatInputCommandContext) {
+        try {
+			await interaction.reply({
+				content: `HI I AM GERALD`,
+			});
+        } catch (error) {
+            this.slashHandler(error, interaction, context);
+        }
+    }
+}
