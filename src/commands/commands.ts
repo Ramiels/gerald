@@ -642,6 +642,21 @@ export class todCommand extends GeraldCommand {
 
     public override async chatInputRun(interaction: discord.CommandInteraction, context: sapphire.ChatInputCommandContext) {
         try {
+            enum Truths {
+                Red,
+                Green,
+                Blue
+            }
+
+            function randomEnum<T>(anEnum: T): T[keyof T] {
+                const enumValues = Object.keys(Truths)
+                  .map(n => Number.parseInt(n))
+                  .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
+                const randomIndex = Math.floor(Math.random() * enumValues.length)
+                const randomEnumValue = enumValues[randomIndex]
+                return randomEnumValue;
+            }
+
 			await interaction.reply({
 				content: `HI I AM GERALD`,
 			});
